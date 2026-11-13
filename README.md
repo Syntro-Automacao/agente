@@ -29,6 +29,12 @@ Use o conteúdo desta pasta como raiz do repositório GitHub dedicado ao site
 No cPanel, clone esse repositório e publique seu conteúdo no document root de
 `agente.syntro.com.br`, garantindo que `index.html` fique na raiz pública.
 
+O arquivo `.cpanel.yml` contém as tarefas de publicação exigidas pelo Git
+Version Control do cPanel. A variável `DEPLOYPATH` deve ser igual ao Document
+Root do subdomínio mostrado em **cPanel > Domínios**. Se o repositório estiver
+na própria pasta pública, as tarefas apenas confirmam que os arquivos já estão
+no lugar; se estiver em outra pasta, os arquivos são copiados para lá.
+
 Se o repositório GitHub ainda não existir, crie-o vazio e, no terminal aberto
 nesta pasta, configure o remoto e envie a branch `main`:
 

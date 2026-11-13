@@ -1,0 +1,12 @@
+---
+# Tarefas de publicação executadas pelo Git Version Control do cPanel.
+# O DEPLOYPATH abaixo deve ser igual a "Document Root" do subdominio
+# agente.syntro.com.br em cPanel > Dominios.
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/syntrocom/agente.syntro.com.br
+    - export ARTIGOS='index.html styles.css privacidade termos README.md'
+    - /bin/mkdir -p "$DEPLOYPATH"
+    # Se a pasta do repositorio ja for a pasta publica, nada precisa ser copiado.
+    - 'if [ "$(readlink -f .)" != "$(readlink -f "$DEPLOYPATH")" ]; then /bin/cp -Rf $ARTIGOS "$DEPLOYPATH"; fi'
+    - /bin/echo "Paginas publicadas em $DEPLOYPATH"
